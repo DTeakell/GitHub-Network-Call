@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D192E4742D00C9DE00AFB174 /* GitHub-Network-Call */ = {
+		D192E4932D00CCDA00AFB174 /* GitHub-Network-Call */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "GitHub-Network-Call";
 			sourceTree = "<group>";
@@ -32,7 +32,7 @@
 		D192E4692D00C9DE00AFB174 = {
 			isa = PBXGroup;
 			children = (
-				D192E4742D00C9DE00AFB174 /* GitHub-Network-Call */,
+				D192E4932D00CCDA00AFB174 /* GitHub-Network-Call */,
 				D192E4732D00C9DE00AFB174 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				D192E4742D00C9DE00AFB174 /* GitHub-Network-Call */,
+				D192E4932D00CCDA00AFB174 /* GitHub-Network-Call */,
 			);
 			name = "GitHub-Network-Call";
 			packageProductDependencies = (
