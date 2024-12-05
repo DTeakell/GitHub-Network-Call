@@ -22,12 +22,6 @@ enum GitHubUserManagerError: Error {
 }
 
 class GitHubUserManager {
-
-    var userName: String
-    
-    init(userName: String) {
-        self.userName = userName
-    }
     
     // API Call
     func getUser(userName: String) async throws -> GitHubUser {
