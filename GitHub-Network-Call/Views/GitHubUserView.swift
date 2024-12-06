@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GitHubUserView: View {
     @Binding var user: GitHubUser?
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -32,42 +34,91 @@ struct GitHubUserView: View {
                             .foregroundStyle(Color.white)
                     }
                 }
+                
                 // User Name
-                Text(user?.name ?? "")
+                Text(user?.name ?? "No name provided")
                     .font(.title)
                     .fontWeight(.semibold)
                 
                 // Follow Metrics
-                HStack {
-                    HStack {
-                        Text("Followers:")
-                            .font(.subheadline)
-                        
-                        Text("\(user?.followers ?? 0)")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.secondary)
-                    }
-                    
-                    HStack {
-                        Text("Followers:")
-                            .font(.subheadline)
-                        
-                        Text("\(user?.followers ?? 0)")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.secondary)
-                    }
-                }
+                GitHubFollowMetricsView(user: $user)
                 
-                
-                Text(user?.bio ?? "Placeholder bio")
+                // Bio
+                Text(user?.bio ?? "No bio provided")
                     .padding()
+                
+                Divider()
+                    .padding(.bottom)
+                
+                HStack {
+                    
+                    Image(systemName: "safari")
+                        .foregroundStyle(.white)
+                        
+                        
+                    Link("Open in GitHub",destination: URL(string: "https://github.com/\(user?.login ?? "")") ?? URL(string: "https://github.com/home")!)
+                        .foregroundStyle(.white)
+                        
+                }
+                .frame(width: 170, height: 40)
+                .padding(.horizontal)
+                .background(Color.purple)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 
                 Spacer()
                 
+                
+            }
+            .padding(.vertical)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                    .tint(.purple)
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Capsule()
+                            .fill(.ultraThinMaterial)
+                            .frame(width: 45, height: 6.0)
+                    }
+                }
             }
             .navigationTitle(user?.login ?? "User Login")
+        }
+    }
+}
+
+
+struct GitHubFollowMetricsView: View {
+    
+    @Binding var user: GitHubUser?
+    
+    var body: some View {
+        HStack {
+            HStack {
+                Text("Followers:")
+                    .font(.subheadline)
+                
+                Text("\(user?.followers ?? 0)")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+            }
+            
+            HStack {
+                Text("Following:")
+                    .font(.subheadline)
+                
+                Text("\(user?.following ?? 0)")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+            }
         }
     }
 }
