@@ -21,5 +21,5 @@ git clone https://github.com/DTeakell/GitHub-Network-Call.git
 3. Build and run on an iPhone simulator or physical device.
 
 ### Requirements
-**Xcode 15 +**
-**iOS 16 +**
+- **Xcode 15 +**
+- **iOS 16 +**
